@@ -11,6 +11,8 @@ public class SausageFingers {
 
     enum ClawState {
         OPEN,
+        LEFT,
+        RIGHT,
         CLOSED
     }
     ClawState clawState;
@@ -37,5 +39,59 @@ public class SausageFingers {
     public void setClawClosed(){
         clawLeft.setAngle(ClawLeft.closedPosition);
         clawRight.setAngle(ClawRight.closedPosition);
+    }
+
+    public void ClawPosition() {
+
+        switch(clawState) {
+            case OPEN:
+                clawLeft.setAngle(clawLeft.openPosition);
+                clawRight.setAngle(clawRight.openPosition);
+
+                if (gamepad1.left_bumper)
+                    clawState = ClawState.LEFT;
+                else if (gamepad1.right_bumper)
+                    clawState = ClawState.RIGHT;
+                else if (gamepad1.y)
+                    clawState = ClawState.CLOSED;
+                break;
+
+            case LEFT:
+                clawLeft.setAngle(clawLeft.openPosition);
+                clawRight.setAngle(clawRight.closedPosition);
+
+
+                if (gamepad1.left_bumper)
+                    clawState = ClawState.CLOSED;
+                else if (gamepad1.right_bumper)
+                    clawState = ClawState.OPEN;
+                else if (gamepad1.y)
+                    clawState = ClawState.OPEN;
+                break;
+
+            case RIGHT:
+                clawLeft.setAngle(clawLeft.closedPosition);
+                clawRight.setAngle(clawRight.openPosition);
+
+                if (gamepad1.left_bumper)
+                    clawState = ClawState.OPEN;
+                else if (gamepad1.right_bumper)
+                    clawState = ClawState.CLOSED;
+                else if (gamepad1.y)
+                    clawState = ClawState.OPEN;
+                break;
+
+            case CLOSED:
+                clawLeft.setAngle(clawLeft.closedPosition);
+                clawRight.setAngle(clawRight.closedPosition);
+
+                if (gamepad1.left_bumper)
+                    clawState = ClawState.LEFT;
+                else if (gamepad1.right_bumper)
+                    clawState = ClawState.RIGHT;
+                else if (gamepad1.y)
+                    clawState = ClawState.OPEN;
+                break;
+        }
     }
 }

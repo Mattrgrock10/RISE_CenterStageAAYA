@@ -74,20 +74,20 @@ public class BeefySlides extends Slides {
                 break;
 
             case FIRST_LINE:
-                targetPos = 6;
+                targetPos = 26;
                 bicep.bicepState = Bicep.BicepStates.FIRST_LINE;
                 break;
 
             case THIRD_LINE:
-                targetPos = 13;
+                targetPos = 55.88;
                 bicep.bicepState = Bicep.BicepStates.THIRD_LINE;
                 break;
 
             case MANUAL:
-                if (gamepad1.dpad_up){
-                    slidesPower = -0.25;
-                } else if (gamepad1.dpad_down){
-                    slidesPower = 0.25;
+                if (gamepad1.right_trigger > 0){
+                    slidesPower = gamepad1.right_trigger*-0.5;
+                } else if (gamepad1.left_trigger > 0){
+                    slidesPower = gamepad1.left_trigger*0.5;
                 } else {
                     slidesPower = 0;
                 }

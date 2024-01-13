@@ -40,15 +40,15 @@ public class BeefCake_TeleOp extends LinearOpMode {
             beefySlides.toggleStates();
             beefySlides.slidesTelemetry();
 
-            if (beefySlides.slidesState == BeefySlides.SlidesState.HOME){
-//                arm.servoPosition = ServoIntakeArm.ServoPosition.INTAKE_POSITION;
-                wrist.wristPosition = BeefWrist.WristPosition.INTAKE_POSITION;
-            } else {
-//                arm.servoPosition = ServoIntakeArm.ServoPosition.OUTTAKE_POSITION;
-                wrist.wristPosition = BeefWrist.WristPosition.OUTTAKE_POSITION;
-            }
+//            if (beefySlides.slidesState == BeefySlides.SlidesState.HOME){
+////                arm.servoPosition = ServoIntakeArm.ServoPosition.INTAKE_POSITION;
+//                wrist.wristPosition = BeefWrist.WristPosition.INTAKE_POSITION;
+//            } else {
+////                arm.servoPosition = ServoIntakeArm.ServoPosition.OUTTAKE_POSITION;
+//                wrist.wristPosition = BeefWrist.WristPosition.OUTTAKE_POSITION;
+//            }
 
-            arm.slidesToggle(beefySlides.slidesState);
+            arm.slidesToggle(beefySlides.slidesState, wrist.wristPosition);
 
             sausageFingers.toggleClaw();
             wrist.setPosition();
